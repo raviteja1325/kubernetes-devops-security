@@ -12,6 +12,15 @@ pipeline {
             steps {
               sh "mvn test" 
             }
-        }  
+        }
+      stage('Docker Build and Push') {
+            steps {
+              sh """
+                print env
+                docker build -t ravitheja13/numeric-app:""$GIT_COMMIT"" .
+                docker push ravitheja13/numeric-app:""$GIT_COMMIT"" 
+              """ 
+            }
+        }   
     }
 }
