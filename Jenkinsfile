@@ -15,7 +15,7 @@ pipeline {
         }
       stage('Docker Build and Push') {
             steps {
-              sh "print env"
+              sh "printenv"
               sh 'docker build -t ravitheja13/numeric-app:""$GIT_COMMIT"" .'
               sh 'docker push ravitheja13/numeric-app:""$GIT_COMMIT"" '
             }
